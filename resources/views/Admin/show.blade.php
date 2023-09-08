@@ -31,7 +31,10 @@
                     </ul>
                 </div>
             </div>
+            <p style="background-color: {{ $project->tag->color }}
+            "> {{ $project->tag->label }} </p>
         </div>
         <a href="{{ route('projects.index') }}" class="btn btn-secondary mt-4">Back</a>
+
     </div>
 @endsection

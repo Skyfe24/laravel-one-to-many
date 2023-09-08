@@ -26,6 +26,7 @@ class ProjectSeeder extends Seeder
                 'description' => $faker->paragraph(),
                 'link' => $faker->sentence(),
                 'image' => $faker->imageUrl(640, 480, 'animals', true),
+                'tag_id' => rand(1, 4)
             ]);
         }
     }

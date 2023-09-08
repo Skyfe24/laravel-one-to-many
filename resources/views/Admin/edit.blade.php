@@ -21,17 +21,28 @@
             name="name">
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="image-file" class="form-label">Aggiungi lo screenshot del progetto</label>
+          <input type="file" class="form-control" id="image-file" name="image">
+        </div>
+      </div>
+
+      <div class="col-6">
         <div class="mb-3">
           <label for="image-file" class="form-label">Aggiungi lo screenshot del progetto</label>
           <input type="file" class="form-control" id="image-file" name="image">
         </div>
       </div>
       
-      <div class="col-12">
+      <div class="col-2">
         <div class="mb-3">
-          <label for="description" class="form-label">Descrizione</label>
-          <textarea class="form-control" id="description" rows="10" name="description">{{ old('description', $project->description) }}</textarea>
+          <label for="tag" class="form-label">Tag</label>
+          <select id="tag" name="tag_id" class="form-control">
+            @foreach ($tags as $tag)
+                <option value="{{ $tag->id}}" {{ old('tag_id',$project->tag_id) == $tag->id ? 'selected' : '' }}>{{ $tag->label}}</option>
+            @endforeach
+          </select>
         </div>
       </div>
 
@@ -41,6 +52,8 @@
           <textarea class="form-control" id="link" rows="10" name="link">{{ old('link', $project->link) }}</textarea>
         </div>
       </div>
+
+      
 
       <div class="col-12 d-flex justify-content-between">
         <a class="btn btn-dark" href="{{ route('projects.index') }}">Torna indietro</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -25,7 +26,8 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
-        return view('admin.edit', compact('project'));
+        $tags = Tag::all();
+        return view('admin.edit', compact('project', 'tags'));
     }
 
     /**
@@ -64,7 +66,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.edit', compact('project'));
+        $tags = Tag::all();
+        return view('admin.edit', compact('project', 'tags'));
     }
 
     /**
@@ -72,8 +75,6 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-
-
 
 
         $project->fill($request->all());
